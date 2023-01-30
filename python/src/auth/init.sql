@@ -1,3 +1,7 @@
+/*  The following script builds our database, 
+    creates the user to access the msql database
+    and grants priveleges to the user we just created 
+*/
 CREATE USER 'auth_user'@'localhost' IDENTIFIED BY 'Aauth123';
 
 CREATE DATABASE auth;
