@@ -20,9 +20,9 @@ def get_queue(name):
         raise error
     else:
         return queue
-
+""""
 def send_message(queue, message_body, message_attributes=None):
-    """
+
     Send a message to an Amazon SQS queue.
 
     :param queue: The queue that receives the message.
@@ -30,7 +30,7 @@ def send_message(queue, message_body, message_attributes=None):
     :param message_attributes: Custom attributes of the message. These are key-value
                                pairs that can be whatever you want.
     :return: The response from SQS that contains the assigned message ID.
-    """
+    
     if not message_attributes:
         message_attributes = {}
 
@@ -44,7 +44,7 @@ def send_message(queue, message_body, message_attributes=None):
         raise error
     else:
         return response
-"""""
+
 def demo():
   queue = get_queue("VideoMP3Queue")
   return send_message(
