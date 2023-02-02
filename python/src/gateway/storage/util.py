@@ -1,5 +1,6 @@
-import channel, json
+import json
 from botocore.exceptions import ClientError
+from ... import channel
 
 """
     The following function needs to upload file to MongoDB via GridFS
@@ -18,20 +19,10 @@ def upload(f, fs, queue, access):
             "mp3_fid": None,
             "username": access["username"],
     }
-
-    # If there is no message sent for the file delete from dB
     try:
-         queue.send_message(
-            queue=queue,
-            message_attributes={
-                "Processed" : {
-                    'StringValue': "No",
-                    'DataType': 'string'
-                }
-            },
-            message_body=json.dumps(message)
-        )
-    except ClientError as error:
+       response = channel.send_message(queue, message)
+    except Exception as err:
+        #message not sent successfully, delete video from dB
         fs.delete(fid)
-        return "internal server error", 500
+        return err
 

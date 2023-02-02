@@ -9,10 +9,12 @@ from .. import channel
 server = Flask(__name__)
 server.config["MONGO_URI"] = "mongodb://host.minikube.internal:27017/videos"
 
-mongo = PyMongo(server) #abstracting handling of MongoDB connection
-fs = gridfs.GridFS(mongo.db) #enable handling of files > 16MB
-
-queue = channel.get_queue("VideoMP3Queue") # Get active AWS SQS Queue
+#abstracting handling of MongoDB connection
+mongo = PyMongo(server) 
+#enable handling of files > 16MB
+fs = gridfs.GridFS(mongo.db) 
+# AWS SQS Queue
+queue = channel.get_queue("VideoMP3Queue") 
 
 @server.route("/login", methods=["POST"])
 def login():  
