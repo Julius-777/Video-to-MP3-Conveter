@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 from auth import validate
 from auth_svc import access
 from storage import util
-import channel
+from .. import channel
 
 server = Flask(__name__)
 server.config["MONGO_URI"] = "mongodb://host.minikube.internal:27017/videos"
@@ -12,9 +12,7 @@ server.config["MONGO_URI"] = "mongodb://host.minikube.internal:27017/videos"
 mongo = PyMongo(server) #abstracting handling of MongoDB connection
 fs = gridfs.GridFS(mongo.db) #enable handling of files > 16MB
 
-# connection = pika.BlockingConnection(pika.ConnectionParameters("rabbitmq"))
-# channel = connection.channel()
-queue = channel.get_queue("VideoMP3Queue")
+queue = channel.get_queue("VideoMP3Queue") # Get active AWS SQS Queue
 
 @server.route("/login", methods=["POST"])
 def login():  
@@ -45,3 +43,4 @@ def download():
 
 if __name__ == "__main__":
 	server.run(host="0.0.0.0", port=8080)
+

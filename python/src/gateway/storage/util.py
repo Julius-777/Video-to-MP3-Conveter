@@ -19,7 +19,7 @@ def upload(f, fs, queue, access):
             "username": access["username"],
     }
 
-    # If no message is sent successfully delete video from dB
+    # If there is no message sent for the file delete from dB
     try:
          queue.send_message(
             queue=queue,
