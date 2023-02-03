@@ -2,28 +2,53 @@
 This is a video to mp3 convert built with a Microservice Architecture using Python, Docker, Kubernetes, AWS SQS, MongoDB and MySQL.
 
 ## Description
+This application has a distributed system design make use of microservice architecture and is written with Python. It makes use of Docker, Kubernetes, AWS SQS, Mongo DB and mySQL. There 3 main services that are run on kubernetes and that is the auth service, the video to mp3 converter service and notification service. The system works as follows:
 
-An in-depth paragraph about your project and overview of use.
+* Users interact with website via API Gateway which routes requests to authentication service. 
+* Authenticated User credentials are stored in MySQLDB and has an attached JWT Token to gain access to the overall service. 
+* AWS SQS is used to handle communication between the distributed microservice components. 
+* When user uploads video it is stored in Mongo DB then a message is sent through SQS notifying converter servcice a video is ready for converation. 
+* Once convertion is completed the conveter service sends a message through SQS which the notification service recieves then proceeds to alert the user via email that their mp3 is read for download.
+
+![image](https://user-images.githubusercontent.com/21098368/216708933-25cee95d-572d-419e-b09c-621b32fec08f.png)
 
 ## Getting Started
+Please note Mac OS was used thus installation methods may differ from windows and linux
 
-### Dependencies
+### Prerequisite
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Docker Desktop
+* Kubectl
+* Minikube
+* Python 3.7 or later
+* You must have an AWS account, and have your default credentials and AWS Region configured as described in the [AWS Tools and SDKs Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/creds-config-files.html). (NOTE! Costs are minimal for a small project but your account will still incure charges so set AWS Budgets)
 
-### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+#### Installing packages
+Please note each service will have its own python virtualenv. So it's encourage to keep the base python install clean and install required packages in each venv.
 
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
+Create a virtual env as follows:
 ```
-code blocks for commands
+python -m venv venv
 ```
+Start a virtual env with:
+```
+source venv/bin/activate
+```
+Deactivate:
+```
+deactivate
+```
+
+Use python pip3 python package manager to install the following packages as required by service:
+```
+python -m pip install [package]
+```
+* Boto3 1.11.10 or later (converter & gateway service)
+* MySQL (auth service)
+* MongoDB (converter & gateway service)
+* Flask (all)
+* GridFS (converter & gateway service)
 
 ## Help
 
