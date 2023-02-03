@@ -1,9 +1,8 @@
 # Video to MP3 Converter
-This is a video to mp3 converter application built with a Microservice Architecture using Python, Docker, Kubernetes, AWS SQS, MongoDB and MySQL.
-The microservice architecture enables the rapid, frequent and reliable delivery of large, complex applications. It also enables an organization to evolve its technology stack more easily without breaking systems and has being come a popular framework intergrating well with modern software engineering principles such as Agile.
+A Microservice architecture enables the rapid, frequent and reliable delivery of large, complex applications. It also enables an organization to evolve its technology stack more easily without breaking systems and has being come a popular framework intergrating well with modern software engineering principles such as Agile. This project was built in order to implement these principles on a small scale project.
 
 ## Description
-This application has a distributed system design make use of microservice architecture and is written with Python. There 3 main services that are run on kubernetes and that is the auth service, the video to mp3 converter service and notification service. The system works as follows:
+This video to mp3 converter application has a distributed system design and was built using Python, Docker, Kubernetes, AWS SQS, MongoDB and MySQL. This microservice architecture has 3 main services running on kubernetes. They include the auth service, the video to mp3 converter service and the notification service. The system works as follows:
 
 * Users interact with website via API Gateway which routes requests to authentication service. 
 * Authenticated User credentials are stored in MySQLDB and has an attached JWT Token to gain access to the overall service. 
