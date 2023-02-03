@@ -33,7 +33,7 @@ def receive_message(queue):
       message = queue.receive_messages(
           MessageAttributeNames=['All'],
           MaxNumberOfMessages=1,
-          WaitTimeSeconds=123
+          WaitTimeSeconds=5
       )
   except ClientError as error:
     logger.exception("Couldn't recieve message from queue: %s", queue)

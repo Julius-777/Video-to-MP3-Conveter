@@ -1,0 +1,8 @@
+# Environment variables that will auto exported within our shell
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: converter-configmap
+data:
+  TOTAL_QUEUES: "2"
+  

@@ -1,12 +1,22 @@
 import json, tempfile, os
 from bson.objectid import ObjectId
+import channel
+os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
 import moviepy.editor
-from ... import channel
 
 queue = channel.get_queue("MP3Queue")
 
-def start(message, fs_videos, fs_mp3s):
-  message = json.loads(message)
+def start(body, fs_videos, fs_mp3s):
+  """
+  Convert video to mp3 and in MongoDB then send message to MP3Queue 
+  for notification service to alert user
+  
+  :param body:
+  :param fs_videos:
+  :param fs_mp3s:
+  return: Error if failed to send message to queue 
+  """
+  message = json.loads(body)
 
   # empty temp file
   tf = tempfile.NamedTemporaryFile()
@@ -21,7 +31,7 @@ def start(message, fs_videos, fs_mp3s):
   #write audio to file
   tf_path = f"{tempfile.getttempdir()}/{message['video_fd']}.pm3"
   audio.write_audiofile(tf_path)
-
+  #store audio file in MongoDB
   with open(tf_path, "rb") as f:
     data = f.read()
     fid = fs_mp3s.put(data)
