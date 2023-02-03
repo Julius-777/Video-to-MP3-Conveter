@@ -71,6 +71,6 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
+Inspiration, code snippets and guidance.
 * [selikapro](https://github.com/selikapro)
 * [awsdocs-sdk-examples](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sqs#code-examples)
