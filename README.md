@@ -24,23 +24,23 @@ PLEASE NOTE: Mac OS was used thus installation methods may differ from windows a
 * You must have an AWS account, and have your default credentials and AWS Region configured as described in the [AWS Tools and SDKs Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/creds-config-files.html). (NOTE! Costs are minimal for a small project but your account will still incure charges so set AWS Budgets)
 
 
-#### Installing packages
+### Installing packages
 Please note each service will have its own python virtualenv. So it's encourage to keep the base python install clean and install required packages in each venv.
 
-Create a virtual env as follows:
+#### Setup the virtual ENV for each service as follows:
 ```
-python -m venv venv
+mkdir gateway
+cd gateway
+python3 -m venv venv
+source ./ven/bin/activate
+env | grep ENV  
 ```
-Start a virtual env with:
-```
-source venv/bin/activate
-```
-Deactivate:
+Deactivate ENV 
 ```
 deactivate
 ```
 
-Use python pip3 python package manager to install the following packages as required by service:
+#### Use python pip3 python package manager to install the following packages as required by service:
 ```
 python -m pip install [package]
 ```
