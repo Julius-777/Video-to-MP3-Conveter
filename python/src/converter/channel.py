@@ -23,7 +23,7 @@ def get_queue(name):
 
 def receive_message(queue):
   """
-    Receive a batch of messages in a single request from an SQS queue.
+    Receive a message per request from an SQS queue.
 
     :param queue: The queue from which to receive messages.
     :return: The list of Message objects received. These each contain the body

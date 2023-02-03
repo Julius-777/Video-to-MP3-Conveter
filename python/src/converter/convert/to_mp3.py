@@ -4,9 +4,7 @@ import channel
 os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
 import moviepy.editor
 
-queue = channel.get_queue("MP3Queue")
-
-def start(body, fs_videos, fs_mp3s):
+def start(queue, body, fs_videos, fs_mp3s):
   """
   Convert video to mp3 and in MongoDB then send message to MP3Queue 
   for notification service to alert user
