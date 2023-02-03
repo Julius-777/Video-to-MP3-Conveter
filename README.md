@@ -14,7 +14,7 @@ This application has a distributed system design make use of microservice archit
 ![image](https://user-images.githubusercontent.com/21098368/216708933-25cee95d-572d-419e-b09c-621b32fec08f.png)
 
 ## Getting Started
-Please note Mac OS was used thus installation methods may differ from windows and linux
+PLEASE NOTE: Mac OS was used thus installation methods may differ from windows and linux
 
 ### Prerequisite
 
