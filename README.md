@@ -22,10 +22,13 @@ PLEASE NOTE: Mac OS was used thus installation methods may differ from windows a
 * Minikube
 * Python 3.7 or later
 * You must have an AWS account, and have your default credentials and AWS Region configured as described in the [AWS Tools and SDKs Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/creds-config-files.html). (NOTE! Costs are minimal for a small project but your account will still incure charges so set AWS Budgets)
+* AWS CLI Credentials need to be setup with your AWS account with permissions granted send and recieve messages from your Queues
+* Need to configure an MP3 Message Queue and Video Message Queue on AWS SQS
 
 
 ### Installing packages
-Please note each service will have its own python virtualenv. So it's encourage to keep the base python install clean and install required packages in each venv.
+Kubernetes will run the docker images hosted on my [docker registry](https://hub.docker.com/repositories/jmc777)
+If wanting to recreate the evnironemnt locally please note each service will have its own python virtualenv. So it's encourage to keep the base python install clean and install required packages for each service in its own venv.
 
 #### Setup the virtual ENV for each service as follows:
 ```
@@ -49,6 +52,7 @@ python -m pip install [package]
 * MongoDB (converter & gateway service)
 * Flask (all)
 * GridFS (converter & gateway service)
+* awscli
 
 ## Help
 
