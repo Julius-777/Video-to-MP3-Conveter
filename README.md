@@ -27,8 +27,8 @@ PLEASE NOTE: Mac OS was used thus installation methods may differ from windows a
 
 
 ### Installing packages
-Kubernetes will run the docker images hosted on my [docker registry](https://hub.docker.com/repositories/jmc777)
-If wanting to recreate the evnironemnt locally please note each service will have its own python virtualenv. So it's encourage to keep the base python install clean and install required packages for each service in its own venv.
+Kubernetes will run the docker images hosted on my [docker registry](https://hub.docker.com/repositories/jmc777).
+If you want to recreate the evnironemnt locally please note each service will have its own python virtualenv. So it's encourage to keep the base python install clean and install required packages for each service in its own venv.
 
 #### Setup the virtual ENV for each service as follows:
 ```
